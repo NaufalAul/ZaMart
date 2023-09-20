@@ -3,6 +3,7 @@
 
 Naufal Aulia - 2206082455 - PBP E
 
+# Tugas 2
 ## Implementasi _checklist_ dari awal sampai akhir
 1. __Membuat sebuah proyek Django baru__
     1. Membuat direktori baru bernama ZaMart
@@ -150,3 +151,78 @@ Naufal Aulia - 2206082455 - PBP E
     - MVT : Terdapat template sebagai komponen untuk menampilkan tampilan dan view memiliki logika lebih untuk penampilan data
     - MVMM : Terdapat ViewModel sebagai perantara yang mengubah data dari model ke format yang lebih sesuai untuk tampilan
 
+
+# Tugas 3
+## Perbedaan __POST__ dan __GET__ dalam Django
+- Perbedan utama antara form POST dan GET dalam Django terletak pada metode yang digunakan untuk mengirim data dari form ke server dan bagaimana data tersebut diproses,
+- Form POST
+    - Metode POST lebih __aman__ untuk mengirim data sensitif karena data yang dikirim tidak akan terlihat dalam `URL`.
+    - Data formulir dikirim dalam tubuh permintaan HTTP, sehingga tidak terlihat oleh pengguna atau dalam URL.
+    - Form POST digunakan ketika ingin mengirim data yang sensitif atau data yang akan memengaruhi perubahan di server, seperti menambahkan data baru ke database.
+    
+- Form GET
+    - Metode GET __kurang aman__ untuk data sensitif karena data yang dikirimkan terlihat dalam URL dan dapat dengan mudah diakses oleh pengguna atau oleh seseorang yang melihat log server.
+    - Data formulir dikirim sebagai parameter query string yang terlihat dalam `URL`.
+    - Form GET digunakan ketika ingin melakukan pencarian atau mengambil data dari server tanpa memengaruhi data di server.
+
+- Sumber
+    - https://www.baeldung.com/cs/http-get-vs-post
+    - https://www.w3schools.com/tags/ref_httpmethods.asp
+
+## Perbedaan utama antara __XML__, __JSON__, dan __HTML__ dalam konteks pengiriman data
+PERBEDAAN | XML | JSON | HTML |
+| --- | --- | --- | --- |
+|Tujuan | Menyimpan dan mentransmisikan data terstruktur | Menyimpan dan mentransmisikan data terstruktur | Merender konten web, seperti teks, gambar, tautan, dan media
+|Tipe Data | Tidak memiliki tipe data bawaan, mendukung berbagai tipe data | Mendukung tipe data yang terbatas seperti string, angka, boolean, objek, larik, dan null | Mendukung tipe data khusus untuk elemen-elemen seperti teks, gambar, tautan, dan elemen media |
+|Format | Bahasa Markup | Format Data (JavaScript) | Bahasa Markup|
+|Basis | SGML | JavaScript | SGML |
+|Encoding | Mendukung berbagai encoding | Hanya mendukung UTF-8 encoding | Mendukung berbagai encoding|
+
+- Sumber
+    - https://www.deltaxml.com/blog/xml/whats-the-relationship-between-xml-json-html-and-the-internet/
+    - https://www.w3schools.com/js/js_json_xml.asp
+
+## Mengapa __JSON__ sering digunakan dalam pertukaran data antara aplikasi web modern?
+
+`JSON` sering digunakan dalam pertukaran data antara aplikasi web modern karena beberapa alasan, antara lain:
+- __Ringkas dan mudah dipahami__, SON memiliki format yang sederhana dan mudah dipahami. Data disusun dalam bentuk pasangan "nama-nilai" yang mirip dengan struktur data dalam bahasa pemrograman, seperti objek dan array. 
+- __Ringan__, JSON adalah format yang ringan dalam hal penggunaan bandwidth. Ini sangat penting dalam lingkungan web di mana penghematan bandwidth dapat meningkatkan kinerja dan efisiensi.
+- __Mendukung berbagai data__, SON mendukung berbagai jenis data, termasuk teks, angka, boolean, objek, array, dan null. Ini memungkinkan representasi data yang kompleks dan bervariasi.
+- __Dukungan browser__, SON dapat dengan mudah diurai (parsed) oleh browser web menggunakan JavaScript. Ini membuatnya ideal untuk komunikasi antara aplikasi web klien dan server.
+
+- Sumber
+    - https://www.sekawanmedia.co.id/blog/json-adalah/
+    - https://media.neliti.com/media/publications/267827-penerapan-data-json-untuk-mendukung-peng-b1a9128a.pdf
+
+## Implementasi _checklist_ dari awal sampai akhir
+1. __Membuat input form untuk menambahkan objek model pada app sebelumnya__
+    - Membuat `forms.py` pada direktori `main` untuk membuat struktur form yang dapat menerima data item baru. Menambahkan class ProductForm dengan models dari product dan fields `["name", "amount", "price", "description"]`.
+2. __Menambahkan 5 fungsi `views` untuk melihat objek yang sudah ditambahkan__
+    - Membuat fungsi baru bernama `create_product` yang menerima parameter request. Fungsi tersebut membuat ProductForm baru dan menyimpan dengan input user yang valid. Setelah itu redirect ke '/' (main) setelah data form berhasil disimpan.
+    - Mengubah fungsi `show_main` untuk mendapatkan semua data dari Item, lalu Item tersebut ditambahkan ke context yang nantinya akan di render.
+    - Menambahkan path url `create_product` pada urls.py di main yang akan menjalankan fungsi `create_product`
+    - Membuat file HTML baru `create_product.html` yang isinya form sesuai fields pada forms.py untuk user mengisi inputan.
+    - Menambahkan kode pada `main.html` untuk menampilkan data item dan tombol untuk redirect ke halaman form.
+    - Membuat fungsi `show_xml` pada view yang isinya mengambil semua data dari Item dan mengembalikan HTTP response dalam format XML.
+    - Membuat fungsi `show_json` pada view yang isinya mengambil semua data dari Item dan mengembalikan HTTP response dalam format JSON.
+    - Membuat fungsi `show_xml_by_id` pada view yang isinya mengambil data dari Item yang sesuai dengan `primary key` dari url dan mengembalikan HTTP response dalam format XML.
+    - Membuat fungsi `show_json_by_id` pada view yang isinya mengambil data dari Item yang sesuai dengan `primary key` dari url dan mengembalikan HTTP response dalam format JSON.
+
+3. __Membuat routing URL untuk masing-masing views yang telah ditambahkan__
+    - Mengimpor `show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id ` dari `main.views` untuk melakukan routing URL.
+    - Membuat routing url atau path url `xml/` pada urls.py di main yang akan menjalankan fungsi `show_xml`.
+    - Membuat routing url atau path url `json/` pada urls.py di main yang akan menjalankan fungsi `show_json`.
+    - Membuat routing url atau path url `xml/<int:id>/` pada urls.py di main yang akan menjalankan fungsi `show_xml_by_id` dan meneruskan id ke fungsi tersebut.
+    - Membuat routing url atau path url `json/<int:id>/` pada urls.py di main yang akan menjalankan fungsi `show_json_by_id` dan meneruskan id ke fungsi tersebut.
+
+## Hasil akses fungsi views yang menampilkan objek dalam beberapa format
+- __HTML__
+![HTML](public/images/HTML.png)
+- __XML__
+![XML](public/images/XML.png)
+- __JSON__
+![JSON](public/images/JSON.png)
+- __XML by id__
+![XMLID](public/images/XMLID.png)
+- __JSON by id__
+![JSONID](public/images/JSONID.png)
