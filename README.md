@@ -45,24 +45,10 @@ Naufal Aulia - 2206082455 - PBP E
         from django.urls import path, include
         ...
         ```
-    2. Tambahkan rute URL seperti berikut untuk mengarahkan ke tampilan `main` dalam `urlpatterns`
-        ```python
-        urlpatterns = [
-        ...
-        path('main/', include('main.urls')),
-        ...
-        ]
-        ```
+    2. Tambahkan rute URL main di `urlpatterns` untuk mengarahkan ke tampilan `main`
+        
 4. __Membuat model pada aplikasi `main` dengan nama `Item` dan memiliki atribut wajib.__
-    1. Buka berkas `models.py` pada direktori `main` dan isi berkas tersebut dengan kode berikut.
-        ```python
-        from django.db import models
-
-        class Product(models.Model):
-            name = models.CharField(max_length=255)
-            amount = models.IntegerField()
-            description = models.TextField()
-        ```
+    1. Buka berkas `models.py` pada direktori `main` dan isi berkas tersebut dengan model yang diinginkan.
     2. Lakukan migrasi model dengan menjalankan perintah berikut.
         ```bash
         python3 manage.py makemigrations
@@ -73,37 +59,11 @@ Naufal Aulia - 2206082455 - PBP E
         ```
 5. __Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML.__
     1. Buat direktori baru di dalam direktori `main` bernama `templates`.
-    2. Buat berkas baru bernama `main.html` di dalam direktori `templates` dan isi dengan kode berikut.
-        ```html
-        <h1>Welcome To ZaMart</h1>
-
-        <h5>Name: </h5>
-        <p>{{ name }}</p>
-        <h5>Class: </h5>
-        <p>{{ class }}</p>
-        ```
-    3. Buka berkas `views.py` yang terletak pada berkas `main`. Tambahkan baris-baris impor berikut di bagian paling atas berkas dan tambahkan fungis `show_main`.
-        ```python
-        def show_main(request):
-            context = {
-                'name': 'Naufal Aulia',
-                'class': 'PBP E'
-            }
-            return render(request, "main.html", context)
-        ```
+    2. Buat berkas baru bernama `main.html` di dalam direktori `templates` dan isi berkas tersebut dengan kode html yang diinginkan.
+    3. Buka berkas `views.py` yang terletak pada berkas `main`. Tambahkan baris-baris impor berikut di bagian paling atas berkas dan tambahkan fungsi `show_main`.
 6. __Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi  `views.py`.__
     1. Buat berkas `urls.py` di dalam direktori `main`.
-    2. Isi `urls.py` dengan kode berikut.
-        ```python
-        from django.urls import path
-        from main.views import show_main
-
-        app_name = 'main'
-
-        urlpatterns = [
-            path('', show_main, name='show_main'),
-        ]
-        ```
+    2. Isi `urls.py` dengan path yang diinginkan.
 7. __Melakukan _depoloyment_ ke Adaptable__
     1. Membuat repositori baru di _github_ yang bernama ZaMart dan lakukan perintah `add`, `commit`, `branch`, `remote`, dan `push`.
     2. _Login_ pada website Adaptable.io dengan menggunakan akun github yang berisi repositori yang ingin di-_deploy_.
@@ -154,15 +114,15 @@ Naufal Aulia - 2206082455 - PBP E
 
 # Tugas 3
 ## Perbedaan __POST__ dan __GET__ dalam Django
-- Perbedan utama antara form POST dan GET dalam Django terletak pada metode yang digunakan untuk mengirim data dari form ke server dan bagaimana data tersebut diproses,
+- Perbedan utama antara form POST dan GET dalam Django terletak pada metode yang digunakan untuk mengirim data dari form ke server dan bagaimana data tersebut diproses.
 - Form POST
     - Metode POST lebih __aman__ untuk mengirim data sensitif karena data yang dikirim tidak akan terlihat dalam `URL`.
-    - Data formulir dikirim dalam tubuh permintaan HTTP, sehingga tidak terlihat oleh pengguna atau dalam URL.
+    - Data form dikirim dalam tubuh permintaan HTTP, sehingga tidak terlihat oleh pengguna atau dalam URL.
     - Form POST digunakan ketika ingin mengirim data yang sensitif atau data yang akan memengaruhi perubahan di server, seperti menambahkan data baru ke database.
     
 - Form GET
     - Metode GET __kurang aman__ untuk data sensitif karena data yang dikirimkan terlihat dalam URL dan dapat dengan mudah diakses oleh pengguna atau oleh seseorang yang melihat log server.
-    - Data formulir dikirim sebagai parameter query string yang terlihat dalam `URL`.
+    - Data form dikirim sebagai parameter query string yang terlihat dalam `URL`.
     - Form GET digunakan ketika ingin melakukan pencarian atau mengambil data dari server tanpa memengaruhi data di server.
 
 - Sumber
@@ -185,10 +145,10 @@ PERBEDAAN | XML | JSON | HTML |
 ## Mengapa __JSON__ sering digunakan dalam pertukaran data antara aplikasi web modern?
 
 `JSON` sering digunakan dalam pertukaran data antara aplikasi web modern karena beberapa alasan, antara lain:
-- __Ringkas dan mudah dipahami__, SON memiliki format yang sederhana dan mudah dipahami. Data disusun dalam bentuk pasangan "nama-nilai" yang mirip dengan struktur data dalam bahasa pemrograman, seperti objek dan array. 
+- __Ringkas dan mudah dipahami__, JSON memiliki format yang sederhana dan mudah dipahami. Data disusun dalam bentuk pasangan "nama-nilai" yang mirip dengan struktur data dalam bahasa pemrograman, seperti objek dan array. 
 - __Ringan__, JSON adalah format yang ringan dalam hal penggunaan bandwidth. Ini sangat penting dalam lingkungan web di mana penghematan bandwidth dapat meningkatkan kinerja dan efisiensi.
-- __Mendukung berbagai data__, SON mendukung berbagai jenis data, termasuk teks, angka, boolean, objek, array, dan null. Ini memungkinkan representasi data yang kompleks dan bervariasi.
-- __Dukungan browser__, SON dapat dengan mudah diurai (parsed) oleh browser web menggunakan JavaScript. Ini membuatnya ideal untuk komunikasi antara aplikasi web klien dan server.
+- __Mendukung berbagai data__, JSON mendukung berbagai jenis data, termasuk teks, angka, boolean, objek, array, dan null. Ini memungkinkan representasi data yang kompleks dan bervariasi.
+- __Dukungan browser__, JSON dapat dengan mudah diurai (parsed) oleh browser web menggunakan JavaScript. Ini membuatnya ideal untuk komunikasi antara aplikasi web klien dan server.
 
 - Sumber
     - https://www.sekawanmedia.co.id/blog/json-adalah/
@@ -226,3 +186,65 @@ PERBEDAAN | XML | JSON | HTML |
 ![XMLID](public/images/XMLID.png)
 - __JSON by id__
 ![JSONID](public/images/JSONID.png)
+
+
+# Tugas 4
+## Apa itu Django `UserCreationForm`, serta jelaskan apa kelebihan dan kekurangannya?
+Django `UserCreationForm` adalah _pre-built form_ yang disediakan oleh Django yang memungkinkan pengembang dengan mudah membuat _form_ untuk pendaftaran pengguna. Django `UserCreationForm` merupakan _subclass_ dari `django.contrib.auth.forms.UserCreationForm` yang merupakan sebuah subkelas dari `Django.contrib.auth.forms`.Django `UserCreationForm` menyediakan `fileds` untuk nama pengguna, kata sandi, dan konfirmasi kata sandi, serta menyertakan validasi untuk memastikan bahwa kata sandi cocok dan memenuhi kompleksitas yang diperlukan.
+- Kelebihan Django `UserCreationForm`:
+  - __Menghemat waktu development__, `UserCreationForm` menyediakan cara mudah untuk membuat form pendaftaran pengguna dengan kode minimal yang menangani validasi kata sandi dan memastikan bahwa kata sandi cocok, sehingga menghemat waktu dan tenaga pengembang.
+  - __Fitur keamanan bawaan__, `UserCreationForm `secara otomatis mengenkripsi kata sandi dengan kunci keamanan yang panjang, memastikan bahwa kata sandi pengguna disimpan dengan aman di database.
+  - __Integrasi dengan Django__, `UserCreationForm` terintegrasi dengan baik dengan framework Django, sehingga mempermudah pengembangan aplikasi web menggunakan Django.
+
+- Kekurangan Django 'UserCreationForm':
+  - __Fleksibilitas terbatas__, `UserCreationForm` memiliki serangkaian bidang dan aturan validasi yang telah ditentukan sebelumnya. Jika perlu mengkustomisasi form secara ekstensif atau memiliki persyaratan validasi yang rumit, mungkin lebih cocok untuk membuat form kustom dari awal.
+  - __Ketergantungan pada Django__, `UserCreationForm` hanya bisa digunakan dalam proyek yang menggunakan _framework_ Django, sehingga sistem autentikasi mungkin tidak cocok untuk aplikasi/proyek yang tidak menggunakan _framework_ Django.
+
+## Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+Autentikasi dan otorisasi dalam Django merupakan hal yang penting, berikut adalah perbedaan dari keduannya:
+- __Autentikasi__
+  Autentikasi adalah proses verifikasi identitas pengguna. Autentikasi mengonfirmasi bahwa pengguna tersebut adalah siapa yang mereka klaim dengan memeriksa kredensial mereka, seperti nama pengguna dan kata sandi, terhadap database pengguna terdaftar. Sistem autentikasi bawaan Django menyediakan fitur untuk registrasi pengguna, login, dan pengelolaan kata sandi. Ketika pengguna diautentikasi, Django menyetel sebuah _session_ dan melampirkan atribut pengguna pada permintaan, mengizinkan tampilan dan templat untuk mengakses informasi pengguna yang diautentikasi. Autentikasi sangat penting untuk memastikan bahwa hanya individu yang berwenang yang dapat mengakses bagian aplikasi yang dibatasi.
+
+- __Otorisasi__
+  Otorisasi menentukan tindakan apa yang boleh dilakukan pengguna dalam suatu aplikasi. Otorisasi mengontrol akses ke berbagai bagian aplikasi berdasarkan peran pengguna, izin, atau kriteria lainnya. Di Django, sistem otorisasi dibangun di atas sistem otentikasi dan menggunakan _user groups_ dan izin untuk mengontrol akses. _User groups_ dapat dibuat untuk mewakili peran atau kategori pengguna yang berbeda, dan izin dapat diberikan ke grup ini. Django menyediakan cara yang fleksibel untuk mengelola akses dan izin pengguna, memungkinkan pengembang untuk menentukan _backend_ dan izin otorisasi khusus sesuai kebutuhan aplikasi mereka.
+
+Secara singkat autentikasi memverifikasi identitas pengguna, sementara otorisasi menentukan tindakan apa yang boleh dilakukan pengguna dalam suatu aplikasi. Autentikasi dan otorisasi penting untuk menjaga keamanan dan integritas aplikasi.Dengan mengautentikasi pengguna, kita dapat memastikan bahwa hanya pengguna sah yang dapat mengakses aplikasi, sementara otorisasi memungkinkan kita mengontrol dan membatasi tindakan yang dapat pengguna lakukan dalam aplikasi berdasarkan peran dan izin pengguna.
+
+## Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+_Cookies_ adalah sejumlah potongan kecil data yang disimpan di komputer pengguna oleh sebuah situs web. _Cookies_ digunakan untuk mengingat informasi tentang pengguna dan preferensi mereka, memungkinkan situs web memberikan pengalaman pengguna yang dipersonalisasi dan lancar. Dalam konteks aplikasi web, cookie biasanya digunakan untuk manajemen sesi, melacak preferensi pengguna, dan menjaga status pengguna di antara permintaan.
+
+Django menggunakan _cookies_ untuk mengelola sesi pengguna dengan mengenkripsi data sesi dan menyimpannya di sisi server. _Cookies_ yang dikirim ke klien hanya berisi ID sesi yang unik. Ketika klien mengirim permintaan berikutnya, _cookies_ dengan ID sesi akan dikirim ke server dan Django akan menggunakan ID tersebut untuk mengambil sesi data yang sudah disimpan sebelumnya. Dengan ini, Django dapat mengelola data sesi pengguna dengan aman. 
+
+## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+Penggunaan _cookies_ secara _default_  dianggap aman dalam pengembangan web karena informasi dalam cookies tidak dapat diubah oleh pengguna atau pihak ketiga tanpa izin. _Cookies_ yang hanya menyimpan informasi seperti ID sesi atau preferensi pengguna biasanya dianggap aman. Akan tetapi, belum tentu penggunaan _cookies_ secara _default_ ini aman. Terdapat risiko keamanan yang dihadapi, antara lain:
+- __Cross-Site Scripting (XSS)__, Penyerang dapat memanfaatkan kerentanannya XSS untuk mencuri cookies pengguna. Hal ini dapat menyebabkan akses tidak sah ke akun pengguna dan informasi sensitif. 
+- __Cross-Site Request Forgery (CSRF)__, Serangan CSRF terjadi ketika situs web berbahaya mengelabui browser pengguna agar membuat permintaan yang tidak diinginkan ke situs web lain tempat pengguna diautentikasi. Jika situs web target hanya mengandalkan cookie untuk autentikasi, situs tersebut dapat memproses permintaan tidak sah ini, sehingga menyebabkan tindakan yang dilakukan atas nama pengguna tanpa persetujuan mereka. Di Django sendiri, Django memiliki fitur bawaan yang melindungi hampir semua serangan CSRF.
+- __Cookie/Session Poisoning__, Jika penyerang berhasil mendapatkan _cookie_ sesi pengguna, mereka dapat menyamar sebagai pengguna tersebut dan mendapatkan akses tidak sah ke akun pengguna.penyerang dapat mencuri cookies pengguna yang disimpan di browser mereka dengan teknik session hijacking atau cross-site scripting (XSS).
+
+
+## Implementasi _checklist_ dari awal sampai akhir
+1. Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+   - Membuat fungsi register untuk membuat akun baru yang mengimplementasikan UserCreationForm.
+   - Membuat berkas register.hmtl pada direktori `main/templates` untuk visualisasi fungsi register.
+   - Membuat fungsi login_user yang bertujuan untuk mengautentikasi pengguna yang ingin login dan mengatur _cookies_.
+   - Membuat berkas login.hmtl pada direktori `main/templates` untuk visualisasi fungsi register.
+   - Membuat fungsi logout_user yang bertujuan untuk melogout pengguna dan menghapus _cookies_
+   - Menambahkan tombol logout pada main.html
+   - Membuat routing url atau path url `register/` pada urls.py di main yang akan menjalankan fungsi `register`.
+   - Membuat routing url atau path url `login/` pada urls.py di main yang akan menjalankan fungsi `login_user`.
+   - Membuat routing url atau path url `logout/` pada urls.py di main yang akan menjalankan fungsi `logout_user`.
+   - Merestriksi akses halaman main dengan menambahkan decorator `@login_required(login_url='/login')`
+2.  Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+3. Menghubungkan model `Item` dengan `User`.
+   - Pada berkas `models.py`  tambahkan import `User` dari `django.contrib.auth.model`.
+   - Menambahkan model `user = models.ForeignKey(User, on_delete=models.CASCADE)` pada class Product.
+   - Mengubah fungsi `create_product` pada berkas `views.py` untuk mengatur penyimpanan product pada setiap login pengguna.
+   - Mengganti name pada context di show_main dengan `request.user.username`.
+   - Melakukan migrasi model untuk menyimpan perubahan.
+
+4.  Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+   - Pada berkas `views.py' tambahkan import `HttpResponseRedirect`, `reverse`, dan `datetime` pada bagian paling atas.
+   - Menambahkan kode pada blok `if user is not None:` pada `login_user` untuk mengatur _cookie_.
+   - Menambahkan kode pada blok `if user is not None:` pada `logout_user` untuk mengatur _cookie_.
+   - Menambahkan key last_login pada context di show_main dengan isi cookies last_login.
+   - Menambahkan pada main.html visual untuk last_login dari context.

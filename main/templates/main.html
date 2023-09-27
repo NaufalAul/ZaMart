@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Welcome to ZaMart!</h1>
-    
-    
+<h1>Welcome to ZaMart!</h1>
 
-    <h5>Name:</h5>
-    <p>{{name}}</p>
 
-    <h5>Class:</h5>
-    <p>{{class}}</p>
+
+<h5>Name:</h5>
+<p>{{name}}</p>
+
+<h5>Class:</h5>
+<p>{{class}}</p>
 <table>
     <tr>
         <th>Name</th>
+        <th>Category</th>
         <th>Price</th>
         <th>Description</th>
         <th>Amount</th>
@@ -20,24 +21,46 @@
 
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
-    <p class="item-count">Kamu menyimpan {{item-count}} item pada aplikasi ini</p>
+    <p class="item-count">Kamu menyimpan {{item_count}} item pada aplikasi ini</p>
 
     {% for product in products %}
-        <tr>
-            <td>{{product.name}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.amount}}</td>
-        </tr>
+    <tr>
+        <td>{{product.name}}</td>
+        <td>{{product.category}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.amount}}</td>
+        <td>
+            <a href="{% url 'main:add_item' product.id %}">
+                <button>+</button>
+            </a>
+            <a href="{% url 'main:reduce_item' product.id %}">
+                <button>-</button>
+            </a>
+            <a href="{% url 'main:delete_item' product.id %}">
+                <button>Delete</button>
+            </a>
+        </td>
+    </tr>
     {% endfor %}
 </table>
 
 <br />
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 
 <a href="{% url 'main:create_product' %}">
     <button>
         Add New Product
     </button>
 </a>
+
+<a href="{% url 'main:logout' %}">
+    <button>
+        Logout
+    </button>
+</a>
+
+
 
 {% endblock content %}
