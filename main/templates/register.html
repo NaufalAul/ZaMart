@@ -6,7 +6,86 @@
 
 {% block content %}  
 
-<div class = "login">
+
+<div class="register">
+    <h1>Register</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.errors }} {{ field.label_tag }} {{ field }}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Daftar</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'main:login' %}">Login Now</a></p>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}  
+</div>
+
+<style>
+    body{
+        background-color:  #F8F0E5 !important;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+    }
+    .register {
+        background-color: #EADBC8 !important;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        text-align: center;
+    }
+    .form-group {
+        font-family: "Inter", sans-serif;
+        margin: 10px ;
+        padding: 10px;
+        text-align: left;
+    }
+    label {
+        display: block;
+    }
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #ffffff;
+        padding: 20px 20px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    p {
+        margin: 5px;
+    }
+
+</style>
+
+
+{% endblock content %}
+
+<!-- <div class = "Register">
     
     <h1>Register</h1>  
 
@@ -19,16 +98,13 @@
                     <td><input type="submit" name="submit" value="Daftar"/></td>  
                 </tr>  
             </table>  
-        </form>
+        </form> -->
 
-    {% if messages %}  
-        <ul>   
+    <!-- {% if messages %}   -->
+        <!-- <ul>   
             {% for message in messages %}  
                 <li>{{ message }}</li>  
                 {% endfor %}  
-        </ul>   
-    {% endif %}
+        </ul>    -->
+    <!-- {% endif %} -->
 
-</div>  
-
-{% endblock content %}

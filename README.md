@@ -248,3 +248,77 @@ Penggunaan _cookies_ secara _default_  dianggap aman dalam pengembangan web kare
    - Menambahkan kode pada blok `if user is not None:` pada `logout_user` untuk mengatur _cookie_.
    - Menambahkan key last_login pada context di show_main dengan isi cookies last_login.
    - Menambahkan pada main.html visual untuk last_login dari context.
+
+
+# Tugas 5
+## Manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya
+1. Class Selector
+    - Memilih elemen-elemen yang memiliki atribut class tertentu.
+    - Berguna ketika ingin memengaruhi beberapa elemen yang memiliki kelas yang sama tanpa memengaruhi elemen lain yang mungkin menggunakan kelas yang sama.
+2. Elemen Selector
+    - Memilih semua elemen dengan tipe tag tertentu, misalnya, `<p>`, `<h1>`, atau `<div>`.
+    - Berguna ketika ingin memengaruhi semua elemen dengan tipe tag tertentu secara konsisten di seluruh halaman web.
+3. ID Selector 
+    - Memilih elemen dengan atribut id tertentu, yang harus unik di seluruh halaman web.
+    - Digunakan ketika Anda ingin memengaruhi elemen tunggal dengan id tertentu.
+4. Descendant Selector 
+    - Memilih elemen yang merupakan turunan dari elemen lain, misalnya, memilih semua `<p>` dalam sebuah `<div>`.
+    - Waktu yang Tepat: Berguna ketika Anda ingin memengaruhi elemen-elemen tertentu yang berada di dalam elemen lain.
+5.  Child Selector (parent > child)
+    - Memilih elemen yang merupakan anak langsung dari elemen lain, tidak termasuk anak cucunya.
+    - Cocok untuk mengatur tata letak elemen anak yang langsung di dalam elemen induk.
+6. Adjacent Sibling Selector (prev + next)
+    - Memilih elemen yang merupakan saudara sejajar (siblings) dari elemen lain, dan berada tepat setelahnya.
+    - Digunakan ketika Anda ingin memengaruhi elemen yang berdampingan atau berada tepat setelah elemen lain dengan tipe tag yang sama.
+7. General Sibling Selector (prev ~ siblings)
+    - Memilih semua elemen saudara sejajar yang memiliki elemen sejajar tertentu sebagai saudara.
+    - Berguna ketika Anda ingin memengaruhi beberapa elemen saudara sejajar yang memiliki elemen sejajar tertentu.
+
+## Apa itu HTML5 Tag
+HTML5 adalah versi terbaru dari bahasa markup HTML (Hypertext Markup Language) yang digunakan untuk membangun struktur dasar halaman web. HTML5 memperkenalkan sejumlah tag baru dan perubahan signifikan dalam cara elemen-elemen HTML digunakan. Banyak elemen baru yang ditambahkan di HTML5 seperti nav, audio, figcaption, progress, command, time, datalist, video, figure, meter, data, section, time, aside, canvas, summary, rp, rt, details, wbr, header, footer, keygen, embed, article, hgroup, bdi, mark, output, source, track, section, ruby dan masih banyak lagi. Terdapat perbedaan HTML5 dengan HTML yang biasa (versi sebelumnya), antara lain adalah:
+HTML | HTML5 |
+| --- | --- |
+Tidak mendukung audio dan video tanpa menggunakan dukungan pemutar flash. | Mendukung kontrol audio dan video dengan penggunaan tag `<audio>` dan `<video>`.
+Menggunakan cookie untuk menyimpan data sementara. | Menggunakan database SQL dan cache aplikasi untuk menyimpan data offline.
+Tidak mengizinkan JavaScript untuk berjalan di browser. | Mengizinkan JavaScript untuk berjalan di latar belakang. Hal ini dimungkinkan karena JS Web worker API di HTML5.
+Bekerja dengan semua browser lama. | Mendukung oleh semua browser baru seperti Firefox, Mozilla, Chrome, Safari, dll.
+Versi HTML yang lebih lama kurang ramah seluler. | Bahasa HTML5 lebih _mobile-friendly_.
+
+
+
+## Jelaskan perbedaan antara margin dan padding
+- Margin
+    - Margin adalah ruang kosong di sekitar batas luar elemen HTML.
+    - Margin adalah jarak antara elemen HTML dengan elemen-elemen di sekitarnya (elemen tetangga).
+    - Margin digunakan untuk mengendalikan jarak antara elemen dengan elemen-elemen di luar elemen tersebut.
+    - Margin tidak memiliki latar belakang dan warna, dan tidak berpengaruh pada ukuran atau tampilan elemen itu sendiri.
+
+- Padding
+    - Padding adalah ruang kosong di antara batas dalam elemen HTML dan kontennya sendiri.
+    - Padding adalah jarak antara konten elemen dan batas dalam elemen tersebut.
+    - Padding digunakan untuk mengendalikan ruang di dalam elemen HTML, seperti ruang di antara teks dan batas elemen.
+    - Padding tidak memiliki latar belakang atau warna tetapi memengaruhi tampilan elemen, menggeser konten lebih ke dalam elemen tersebut.
+
+Dalam gambaran yang lebih sederhana, margin mengatur jarak di luar elemen (seperti ruang di antara elemen-elemen), sedangkan padding mengatur ruang di dalam elemen (seperti ruang di antara konten dan batas elemen).
+
+## Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap
+- Tailwind
+    - Pendekatan Utility-First: Tailwind CSS mengikuti pendekatan "utility-first", di mana Anda membangun tampilan web dengan menggabungkan kelas-kelas kecil yang mengontrol properti seperti warna, margin, padding, dan banyak lagi. Ini memberikan fleksibilitas yang tinggi dalam mengkustomisasi tampilan.
+    - Kustomisasi: Tailwind memungkinkan pengguna untuk menyesuaikan desain dengan mudah melalui konfigurasi file, sehingga Anda dapat menentukan gaya desain yang sangat spesifik sesuai kebutuhan Anda.
+    - Kecil dan Cepat: Tailwind dibangun dengan ukuran yang lebih kecil daripada Bootstrap, sehingga dapat menghasilkan situs web yang lebih ringan dalam hal ukuran file CSS.
+
+- Bootstrap
+    - Pendekatan Komponen: Bootstrap memiliki pendekatan berbasis komponen, di mana elemen UI (seperti tombol, kartu, atau jumbotron) dikemas menjadi komponen yang dapat digunakan kembali. Ini membuat Bootstrap lebih mudah digunakan jika Anda ingin membangun situs dengan cepat menggunakan komponen yang telah tersedia.
+    - Desain Responsif: Bootstrap memiliki dukungan bawaan untuk desain responsif, yang memudahkan pengembang untuk membuat situs yang dapat menyesuaikan diri dengan berbagai perangkat dan ukuran layar.
+    - Dokumentasi yang Kuat: Bootstrap memiliki dokumentasi yang sangat kuat dan komunitas yang besar, sehingga mudah untuk menemukan sumber daya dan bantuan jika Anda mengalami masalah.
+
+Bootstap digunakan jika ingin membangun situs web dengan cepat dan menginginkan komponen-komponen UI yang sudah ada. Bootstrap juga cocok untuk proyek-proyek kecil atau ketika tidak ingin menghabiskan banyak waktu menyesuaikan desain. Sementara itu, Tailwind dapat digunakan jika ingin memiliki tingkat kontrol yang tinggi atas desain dan siap untuk menulis lebih banyak kode HTML dengan menggabungkan kelas-kelas utilitas. Tailwind cocok untuk proyek-proyek yang memerlukan desain yang sangat spesifik atau desain yang unik.
+
+## Implementasi _checklist_ dari awal sampai akhir
+1.  Kustomisasi desain pada templat HTML
+    - Kustomisasi halaman login, register, dan tambah inventori
+        - Menggunakan _framework_ Bootstrap untuk melakukan kustomisasi pada ketiga halaman tersebut seperti menggunakan button, table, setting margin dan padding bawaan dari Bootstrap.
+        - Menggunakan CSS untuk melakukan kustomisasi pada beberapa komponen
+    - Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
+        - Menggunakan card untuk kustomisasi daftar inventori serta mengkustomisasi warna table dengan fitur bawaan bootstrap.
+        - Menggunakan styling CSS untuk kustomisasi daftar inventori

@@ -33,6 +33,18 @@ def show_main(request):
 
     return render(request, "main.html", context)
 
+def edit_product(request, id):
+    product = Product.objects.get(pk = id)
+
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+
 def create_product(request):
     form = ProductForm(request.POST or None)
 
