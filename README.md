@@ -322,3 +322,40 @@ Bootstap digunakan jika ingin membangun situs web dengan cepat dan menginginkan 
     - Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
         - Menggunakan card untuk kustomisasi daftar inventori serta mengkustomisasi warna table dengan fitur bawaan bootstrap.
         - Menggunakan styling CSS untuk kustomisasi daftar inventori
+
+# Tugas 6
+## Perbedaan antara asynchronous programming dengan synchronous programming.
+Asynchronous | Synchronous |
+| --- | --- |
+Tugas atau operasi dapat dimulai dan dijalankan secara independen. | Tugas atau operasi dieksekusi secara berurutan, satu per satu.
+Digunakan dalam situasi di mana ada I/O (Input/Output) yang melibatkan waktu. | Ketika ada tugas yang memakan waktu lama, program akan terhenti atau terblokir, dan tidak dapat melakukan tugas lain selama tugas itu berjalan.
+Sangat penting untuk memprogram tugas independen dan ideal untuk proyek pengembangan dengan banyak iterasi. | Paling baik digunakan dalam sistem reaktif dan diakui oleh setiap bahasa pemrograman.
+
+
+## Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya.
+
+Paradigma event-driven programming adalah paradigma pemrograman di mana alur program ditentukan oleh kejadian atau event tertentu. Dalam penerapan JavaScript dan AJAX, paradigma ini digunakan untuk menangani interaksi pengguna dengan halaman web. Contohnya, ketika pengguna mengklik tombol atau mengisi formulir, event tersebut akan memicu fungsi atau aksi tertentu yang telah ditentukan sebelumnya. Pada tugas kali ini, penerapa JavaScript dan AJAX digunakan untuk melakukan _Add Product_ dan _Delete Prodcut_ pada aplikasi ini. 
+
+## Penerapan asynchronous programming pada AJAX.
+Asynchronous programming pada AJAX memungkinkan permintaan data (request) dan menangani sebuah tanggapan (handling response) dilakukan secara non-blocking, sehingga tidak memblokir eksekusi lebih lanjut saat satu atau lebih operasi sedang berlangsung. AJAX menggunakan asynchronous data transfer (HTTP request) antara browser dan web server, yang memperbolehkan halaman web memanggil bit yang kecil atau seluruh informasi dari server. Dalam AJAX, aplikasi web dapat mengambil data dari server secara asynchronous di belakang tanpa perlu refresh halaman atau postback. Dengan demikian, asynchronous programming pada AJAX memungkinkan penggunaan AJAX untuk membuat aplikasi web yang lebih responsif dan cepat.
+
+## AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+- Fetch API
+  Fetch API merupakan interface bawaan dari JavaScript. Fetch API mengembalikan Promis yang memudahkan penanganan operasi asinkron. Fetch API lebih fleksibel dalam hal pengaturan konfigurasi permintaan dan pengolahan respons serta memiliki sintaks yang lebih sederhana dan modern.
+
+- jQuery
+  jQuery adalah metode yang disediakan oleh library jQuery untuk melakukan HTTP request. Dalam hal fleksibilitas, jQuery kurang fleksibel dibandingkan dengan Fetch API dalam hal penganturan konfigurasi permintaan dan pengolahan respons. Selain itu, jQuery memerlukan penggunaan library jQuery yang dapat meningkatkan ukuran file dan mempengaruhi waktu pemuatan halaman. 
+
+Fetch API lebih baik digunakan dari pada jQuery karena Fetch API merupakan bawaan dari JavaScript yang membuat kita lebih leluasa terhadap kontrol atas HTTP request dan penanganan response dan memiliki sintaks yang lebih modern. 
+
+## Implementasi _checklist_ dari awal sampai akhir
+- Membuat tag `script` pada bagian paling bawah dari file main.html
+- Membuat fungsi getProducts pada bagian script untuk melakukan fetch pada product
+- Membuat fungsi refreshProducts pada bagian script untuk mengisi bagian card dengan card yang sudah berisi prodcut dari fungsi getProducts
+- Menjalankan fungsi refreshProducts setiap kali tag script dijalankan
+- Menambahkan modal dengan memanfaatkan add class dan remove class pada JS
+- Membuat modal dengan input sesuai model dari product
+- Membuat fungsi add_product_ajax pada views.py untuk menyimpan inputan product users dan tambahkan pathnya pada urls.py
+- Membuat fungsi addProducts pada bagian script untuk mengirim data inputan ke server lalu menjalankan refereshProduct setelah server berhasil mengeksekusi fungsi add_product_ajax. 
+- Melakukan printah colectstatic dengan menjalankan `python3 manage.py collecstatic`
