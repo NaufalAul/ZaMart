@@ -1,7 +1,7 @@
 # ZAMART
 [Link Adaptable]( https://zamart.adaptable.app/main)
 
-Naufal Aulia - 2206082455 - PBP E
+Naufal Aulia - 2206082455 - PBP E 
 
 # Tugas 2
 ## Implementasi _checklist_ dari awal sampai akhir
@@ -358,4 +358,4 @@ Fetch API lebih baik digunakan dari pada jQuery karena Fetch API merupakan bawaa
 - Membuat modal dengan input sesuai model dari product
 - Membuat fungsi add_product_ajax pada views.py untuk menyimpan inputan product users dan tambahkan pathnya pada urls.py
 - Membuat fungsi addProducts pada bagian script untuk mengirim data inputan ke server lalu menjalankan refereshProduct setelah server berhasil mengeksekusi fungsi add_product_ajax. 
-- Melakukan printah colectstatic dengan menjalankan `python3 manage.py collecstatic`
+- Melakukan printah colectstatic dengan menjalankan `python3 manage.py collecstatic`.
